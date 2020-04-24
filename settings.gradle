@@ -1,2 +1,5 @@
 rootProject.name='CocktailFever'
 include ':app'
+include ':usecases'
+include ':domain'
+include ':data'
