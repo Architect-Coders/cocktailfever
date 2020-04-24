@@ -1,6 +1,6 @@
-package com.architect.g1.cocktailfever.models
+package com.architect.g1.cocktailfever.domain
 
-data class Cocktail(
+data class Coctel(
     val id:Int,
     val nombre:String,
     val categoria:String,
