@@ -1,7 +1,8 @@
-package com.architect.g1.cocktailfever
+package com.architect.g1.cocktailfever.ui.main
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import com.architect.g1.cocktailfever.R
 
 class MainActivity : AppCompatActivity() {
 
