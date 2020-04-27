@@ -1,4 +1,4 @@
-package com.architect.g1.cocktailfever.data
+package com.architect.g1.cocktailfever.data.repository
 
 class CoctelesRepository(val localDataSource: LocalDataSource, val remoteDataSource: RemoteDataSource) {
 }
