@@ -11,16 +11,17 @@ data class ResultadoCoctelDb(
 
 @Parcelize
 data class Coctel(
-    @SerializedName("idDrink") val id:Int,
+    @SerializedName("idDrink") val id: String,
     @SerializedName("strDrink") val nombre:String,
     @SerializedName("strDrinkThumb") val thumbUrl:String
 ): Parcelable
 
 @Parcelize
 data class CoctelDetalle(
-@SerializedName("idDrink") val id:Int,
+@SerializedName("idDrink") val id: String,
 @SerializedName("strDrink") val nombre:String,
 @SerializedName("strDrinkThumb") val thumbUrl:String,
+@SerializedName("strCategory") val categoria: String,
 @SerializedName("strInstructions") val instrucciones: String,
 
 @SerializedName("strIngredient1") val ingrediente_1: String,
