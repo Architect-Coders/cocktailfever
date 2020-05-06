@@ -5,16 +5,20 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.architect.g1.cocktailfever.R
 import com.architect.g1.cocktailfever.domain.Coctel
+import com.architect.g1.cocktailfever.ui.common.basicDiffUtil
 import com.architect.g1.cocktailfever.ui.common.inflate
 import com.architect.g1.cocktailfever.ui.common.loadUrl
 import kotlinx.android.synthetic.main.view_coctel_item.view.*
 
 private typealias CoctelListener = (Coctel) -> Unit
 
-class CoctelAdapter (
-    private val items:List<Coctel> = emptyList() ,
-    private val listener:CoctelListener) : RecyclerView.Adapter<CoctelAdapter.ViewHolder>(){
+class CoctelAdapter (private val listener:CoctelListener) :
+    RecyclerView.Adapter<CoctelAdapter.ViewHolder>(){
 
+    var items:List<Coctel> by basicDiffUtil(
+        emptyList(),
+        areItemsTheSame = { old,new -> old.id==new.id}
+    )
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val view:View=parent.inflate(R.layout.view_coctel_item)
