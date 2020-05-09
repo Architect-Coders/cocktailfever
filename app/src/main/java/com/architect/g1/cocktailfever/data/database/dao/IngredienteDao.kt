@@ -1,7 +1,7 @@
-package com.architect.g1.cocktailfever.model.database.dao
+package com.architect.g1.cocktailfever.data.database.dao
 
 import androidx.room.*
-import com.architect.g1.cocktailfever.model.database.entity.Ingrediente
+import com.architect.g1.cocktailfever.data.database.entity.Ingrediente
 
 @Dao
 interface IngredienteDao {
@@ -14,14 +14,20 @@ interface IngredienteDao {
     @Query("SELECT * FROM ingrediente WHERE nombre = :nombreIngrediente")
     fun getByName(nombreIngrediente: String): Ingrediente
 
+    @Query("SELECT count(id) FROM ingrediente")
+    fun count(): Int
+
     @Insert(onConflict = OnConflictStrategy.IGNORE)
     fun insert(ingrediente: Ingrediente)
 
+    @Insert(onConflict = OnConflictStrategy.IGNORE)
+    fun insertAll(ingredientes: List<Ingrediente>)
+
     @Update
-    fun updateById(ingrediente: Ingrediente)
+    fun update(ingrediente: Ingrediente)
 
     @Delete
-    fun deleteById(ingrediente: Ingrediente)
+    fun delete(ingrediente: Ingrediente)
 
     @Query("DELETE FROM ingrediente")
     fun deleteAll()
