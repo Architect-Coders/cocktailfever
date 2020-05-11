@@ -9,6 +9,8 @@ import com.architect.g1.cocktailfever.R
 import com.architect.g1.cocktailfever.data.FakeLocalDataSource
 import com.architect.g1.cocktailfever.data.FakeRemoteDataSource
 import com.architect.g1.cocktailfever.data.repository.CoctelesRepository
+import com.architect.g1.cocktailfever.ui.common.startActivity
+import com.architect.g1.cocktailfever.ui.detail.DetailActivity
 import kotlinx.android.synthetic.main.activity_main.*
 import com.architect.g1.cocktailfever.ui.main.MainViewModel.UiModel
 
@@ -38,7 +40,7 @@ class MainActivity : AppCompatActivity() {
     private fun updateUi(model:UiModel){
         when(model){
             is UiModel.Content -> adapter.items=model.cocteles
-            is UiModel.Navigation -> TODO("Implementar Activity Datail")
+            is UiModel.Navigation -> startActivity<DetailActivity>()
         }
     }
 }
