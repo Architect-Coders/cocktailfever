@@ -1,5 +1,8 @@
 package com.architect.g1.cocktailfever.ui.common
 
+import android.app.Activity
+import android.content.Context
+import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -34,3 +37,8 @@ inline fun <VH : RecyclerView.ViewHolder, T> RecyclerView.Adapter<VH>.basicDiffU
             override fun getNewListSize(): Int = new.size
         }).dispatchUpdatesTo(this@basicDiffUtil)
     }
+
+inline fun <reified T : Activity> Context.startActivity() {
+    var intent=Intent(this, T::class.java)
+    startActivity(intent)
+}
