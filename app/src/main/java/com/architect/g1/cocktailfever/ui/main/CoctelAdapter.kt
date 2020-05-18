@@ -35,9 +35,8 @@ class CoctelAdapter (private val listener:CoctelListener) :
         RecyclerView.ViewHolder(view) {
 
         fun bind(coctelItem: Coctel){
-            itemView.txtTitle .text = coctelItem.nombre
-            itemView.imgThumb.loadUrl(coctelItem.thumbUrl)
-
+            itemView.tv_coctail.text = coctelItem.nombre
+            itemView.iv_coctail.loadUrl(coctelItem.thumbUrl)
             itemView.setOnClickListener { listener(coctelItem) }
         }
     }
