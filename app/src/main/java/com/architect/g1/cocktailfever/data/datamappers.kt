@@ -7,6 +7,11 @@ import com.architect.g1.cocktailfever.domain.Ingrediente
 import com.architect.g1.cocktailfever.data.server.Coctel as ServerCoctel
 import com.architect.g1.cocktailfever.data.server.CoctelDetalle as ServerCoctelDetalle
 
+import com.architect.g1.cocktailfever.domain.Coctel as DomainCoctel
+import com.architect.g1.cocktailfever.data.database.entity.Coctel as RoomCoctel
+import com.architect.g1.cocktailfever.domain.Ingrediente as DomainIngrediente
+import com.architect.g1.cocktailfever.data.database.entity.Ingrediente as RoomIngrediente
+
 
 fun ServerCoctel.aDomainCoctel(): CoctelLista = CoctelLista(
     id.toInt(),
@@ -30,3 +35,36 @@ fun ServerCoctelDetalle.aDomainCoctelDetalle(): Coctel{
     return Coctel(id.toInt(),nombre,categoria,instrucciones,thumbUrl,ingredientes)
 
 }
+
+fun RoomCoctel.aDomainCoctel(): DomainCoctel =
+    DomainCoctel(
+        id,
+        nombre,
+        categoria,
+        instrucciones,
+        thumbUrl,
+        ingredientes = ArrayList<DomainIngrediente>()
+    )
+
+fun DomainCoctel.aRoomCoctel(): RoomCoctel =
+    RoomCoctel(
+        id,
+        nombre,
+        categoria,
+        instrucciones,
+        thumbUrl,
+        ingredientes = ArrayList<RoomIngrediente>()
+    )
+
+fun RoomIngrediente.aDomainIngrediente(): DomainIngrediente =
+    DomainIngrediente(
+        nombre,
+        medida
+    )
+
+fun DomainIngrediente.aRoomIngrediente(): RoomIngrediente =
+    RoomIngrediente(
+        0,
+        nombre,
+        medida
+    )
