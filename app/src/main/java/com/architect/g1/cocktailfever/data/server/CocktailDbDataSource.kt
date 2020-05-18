@@ -4,11 +4,10 @@ import com.architect.g1.cocktailfever.data.aDomainCoctel
 import com.architect.g1.cocktailfever.data.aDomainCoctelDetalle
 import com.architect.g1.cocktailfever.data.source.RemoteDataSource
 import com.architect.g1.cocktailfever.domain.Coctel
-import com.architect.g1.cocktailfever.domain.CoctelLista
 
 class CocktailDbDataSource: RemoteDataSource {
 
-    override suspend fun obtenerCocteles(): List<CoctelLista> =
+    override suspend fun obtenerCocteles(): List<Coctel> =
         CocktailDb.servicio.obtenerTodosLosCocteles().resultados.map { it.aDomainCoctel() }
 
     override suspend fun obtenerDetalleCoctel(id: String): Coctel =

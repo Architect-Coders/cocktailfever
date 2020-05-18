@@ -1,10 +1,12 @@
 package com.architect.g1.cocktailfever.data.repository
 
 import com.architect.g1.cocktailfever.data.source.LocalDataSource
+import com.architect.g1.cocktailfever.data.source.RemoteDataSource
 import com.architect.g1.cocktailfever.domain.Coctel
 
 class CoctelesRepository(
-    private val localDataSource: LocalDataSource
+    private val localDataSource: LocalDataSource,
+    private val remoteDataSource: RemoteDataSource
 ) {
 
     suspend fun getCoctelById(id: Int): Coctel {
@@ -12,6 +14,9 @@ class CoctelesRepository(
     }
 
     suspend fun getAllCocteles(): List<Coctel> {
+        if(localDataSource.isCoctelTableEmpty()){
+            localDataSource.insertAllCocteles(remoteDataSource.obtenerCocteles())
+        }
         return localDataSource.getAllCocteles()
     }
 
