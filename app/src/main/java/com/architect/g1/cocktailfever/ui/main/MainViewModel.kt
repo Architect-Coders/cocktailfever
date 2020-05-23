@@ -4,12 +4,14 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
-import com.architect.g1.cocktailfever.data.repository.CoctelesRepository
 import com.architect.g1.cocktailfever.domain.Coctel
 import com.architect.g1.cocktailfever.ui.common.Scope
+import com.architect.g1.cocktailfever.usecases.GetAllCocteles
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 
-class MainViewModel(private val coctelesRepository: CoctelesRepository):ViewModel(),
+class MainViewModel(private val getAllCoctelesUsesCase: GetAllCocteles):ViewModel(),
     Scope by Scope.Impl() {
 
     sealed class UiModel{
@@ -31,8 +33,8 @@ class MainViewModel(private val coctelesRepository: CoctelesRepository):ViewMode
 
     private  fun refresh(){
         launch {
-            //TODO: Pendiente a la integración rama data con el método para obtener los cocteles
-            _model.value=UiModel.Content(emptyList())
+            _model.value=UiModel.Loading
+            _model.value=UiModel.Content(getAllCoctelesUsesCase.invoke())
         }
     }
 
@@ -46,8 +48,8 @@ class MainViewModel(private val coctelesRepository: CoctelesRepository):ViewMode
 }
 
 @Suppress("UNCHECKED_CAST")
-class MainViewModelFactory(private val coctelesRepository: CoctelesRepository) :
+class MainViewModelFactory(private val getAllCoctelesUsesCase: GetAllCocteles) :
     ViewModelProvider.Factory {
     override fun <T : ViewModel?> create(modelClass: Class<T>): T =
-        MainViewModel(coctelesRepository) as T
+        MainViewModel(getAllCoctelesUsesCase) as T
 }
