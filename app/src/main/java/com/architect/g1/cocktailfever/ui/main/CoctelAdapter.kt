@@ -21,7 +21,7 @@ class CoctelAdapter (private val listener:CoctelListener) :
     )
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-        val view:View=parent.inflate(R.layout.view_coctel_item)
+        val view:View=parent.inflate(R.layout.view_coctel_item,false)
         return ViewHolder(view,listener)
     }
 
