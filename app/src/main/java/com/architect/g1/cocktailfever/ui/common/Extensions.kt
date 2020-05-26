@@ -43,6 +43,11 @@ inline fun <VH : RecyclerView.ViewHolder, T> RecyclerView.Adapter<VH>.basicDiffU
     }
 
 inline fun <reified T : Activity> Context.startActivity() {
-    var intent=Intent(this, T::class.java)
+    val intent=Intent(this, T::class.java)
+    startActivity(intent)
+}
+
+inline fun <reified T : Activity> Context.startActivity(body: Intent.() -> Unit) {
+    val intent=Intent(this, T::class.java).apply(body)
     startActivity(intent)
 }
