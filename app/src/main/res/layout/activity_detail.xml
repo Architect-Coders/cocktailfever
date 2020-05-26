@@ -18,12 +18,10 @@
         android:visibility="gone"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        app:layout_anchor="@id/iv_coctail"
         android:layout_marginLeft="20dp"
         android:layout_marginRight="20dp"
         android:layout_marginBottom="20dp"
         app:cardBackgroundColor="#fafafa"
-        app:layout_anchorGravity="bottom|end"
         android:layout_marginTop="-25dp"
         app:cardElevation="5dp">
 
@@ -61,7 +59,7 @@
             <TextView
                 android:id="@+id/tv_titulo_ingredientes"
                 android:layout_marginTop="4dp"
-                android:layout_marginLeft="14dp"
+                android:layout_marginStart="14dp"
                 android:text="@string/string_ingredientes"
                 android:textSize="15sp"
                 android:layout_width="wrap_content"

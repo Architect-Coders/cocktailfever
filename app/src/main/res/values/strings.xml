@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">CocktailFever</string>
+    <string name="string_preparacion">Preparación:</string>
+    <string name="string_ingredientes">Ingredientes:</string>
 </resources>
