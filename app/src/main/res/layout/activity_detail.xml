@@ -1,9 +1,82 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/evento"
+    android:orientation="vertical"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".ui.detail.DetailActivity">
+    android:layout_height="match_parent">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <ImageView
+        android:id="@+id/iv_coctail"
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:scaleType="centerCrop"
+        tools:src="@mipmap/ic_launcher"/>
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/contenedorDetalle"
+        android:visibility="gone"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginBottom="20dp"
+        app:cardBackgroundColor="#fafafa"
+        android:layout_marginTop="-25dp"
+        app:cardElevation="5dp"
+        tools:visibility="visible">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <RelativeLayout
+                android:id="@+id/content_preparacion"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:id="@+id/tv_titulo_preparacion"
+                    android:layout_marginTop="6dp"
+                    android:layout_marginStart="14dp"
+                    android:text="@string/string_preparacion"
+                    android:textSize="15sp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
+
+                <TextView
+                    android:id="@+id/tv_prepracion"
+                    android:textSize="14sp"
+                    android:layout_marginLeft="15dp"
+                    android:layout_marginBottom="4dp"
+                    android:layout_marginRight="15dp"
+                    android:layout_marginTop="6dp"
+                    android:textAlignment="viewStart"
+                    android:layout_below="@id/tv_titulo_preparacion"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    tools:text="@string/string_preparacion_ejemplo"/>
+            </RelativeLayout>
+
+            <TextView
+                android:id="@+id/tv_titulo_ingredientes"
+                android:layout_marginTop="4dp"
+                android:layout_marginStart="14dp"
+                android:text="@string/string_ingredientes"
+                android:textSize="15sp"
+                android:layout_width="wrap_content"
+                android:layout_below="@id/content_preparacion"
+                android:layout_height="wrap_content" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/lista_ingredientes"
+                android:overScrollMode="never"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:adjustViewBounds="true"
+                android:layout_below="@id/tv_titulo_ingredientes">
+            </androidx.recyclerview.widget.RecyclerView>
+        </RelativeLayout>
+    </androidx.cardview.widget.CardView>
+</LinearLayout>
