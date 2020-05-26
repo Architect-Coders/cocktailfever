@@ -53,7 +53,9 @@ class MainActivity : AppCompatActivity() {
 
         when(model){
             is UiModel.Content -> adapter.items=model.cocteles
-            is UiModel.Navigation -> startActivity<DetailActivity>()
+            is UiModel.Navigation -> startActivity<DetailActivity>(){
+                putExtra(DetailActivity.COCTEL,model.coctel.id)
+            }
         }
     }
 }
