@@ -2,6 +2,7 @@ package com.architect.g1.cocktailfever.ui.main
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.View
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.get
@@ -47,6 +48,9 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun updateUi(model:UiModel){
+
+        progressBar.visibility=if(model is UiModel.Loading) View.VISIBLE else View.GONE
+
         when(model){
             is UiModel.Content -> adapter.items=model.cocteles
             is UiModel.Navigation -> startActivity<DetailActivity>()
