@@ -12,8 +12,8 @@ import kotlinx.android.synthetic.main.view_coctel_item.view.*
 
 private typealias CoctelListener = (Coctel) -> Unit
 
-class CoctelAdapter (private val listener:CoctelListener) :
-    RecyclerView.Adapter<CoctelAdapter.ViewHolder>(){
+class CoctelesAdapter (private val listener:CoctelListener) :
+    RecyclerView.Adapter<CoctelesAdapter.ViewHolder>(){
 
     var items:List<Coctel> by basicDiffUtil(
         emptyList(),

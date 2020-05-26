@@ -6,9 +6,7 @@ import android.view.View
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.get
-import com.architect.g1.cocktailfever.CoctelApp
 import com.architect.g1.cocktailfever.R
-import com.architect.g1.cocktailfever.data.database.CocktailFeverDatabase_Impl
 import com.architect.g1.cocktailfever.data.database.source.RoomDataSource
 import com.architect.g1.cocktailfever.data.repository.CoctelesRepository
 import com.architect.g1.cocktailfever.data.server.CocktailDbDataSource
@@ -22,7 +20,7 @@ import com.architect.g1.cocktailfever.usecases.GetAllCocteles
 class MainActivity : AppCompatActivity() {
 
     private lateinit var viewModel: MainViewModel
-    private lateinit var adapter: CoctelAdapter
+    private lateinit var adapter: CoctelesAdapter
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -40,7 +38,7 @@ class MainActivity : AppCompatActivity() {
             MainViewModelFactory(getAllCocteles)
         ).get()
 
-        adapter= CoctelAdapter(viewModel::onCoctelClicked)
+        adapter= CoctelesAdapter(viewModel::onCoctelClicked)
         recycler.adapter=adapter
 
         viewModel.model.observe(this, Observer(::updateUi))
