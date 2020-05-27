@@ -4,7 +4,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.architect.g1.cocktailfever.R
-import com.architect.g1.cocktailfever.data.database.entity.Ingrediente
+import com.architect.g1.cocktailfever.domain.Ingrediente
 import com.architect.g1.cocktailfever.ui.common.basicDiffUtil
 import com.architect.g1.cocktailfever.ui.common.inflate
 import kotlinx.android.synthetic.main.view_coctel_ingredientes_item.view.*
