@@ -23,14 +23,15 @@ class MainActivity : AppCompatActivity() {
     private lateinit var viewModel: MainViewModel
     private lateinit var adapter: CoctelAdapter
 
+    //private lateinit var component: MainActivityComponent
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-
+        //component = app.component.
         //TODO Esto debe ser resuelto por el inyector de dependencia
-        val roomDataSource=RoomDataSource(this.app.db)
+        //val roomDataSource=RoomDataSource(this.app.db)
         val coctelesRepository = CoctelesRepository(roomDataSource, CocktailDbDataSource())
         val getAllCocteles = GetAllCocteles(coctelesRepository)
 
