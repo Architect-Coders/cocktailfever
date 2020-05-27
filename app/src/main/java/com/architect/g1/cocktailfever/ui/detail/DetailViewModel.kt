@@ -1,0 +1,50 @@
+package com.architect.g1.cocktailfever.ui.detail
+
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.MutableLiveData
+import androidx.lifecycle.ViewModel
+import androidx.lifecycle.ViewModelProvider
+import com.architect.g1.cocktailfever.domain.Coctel
+import com.architect.g1.cocktailfever.ui.common.Scope
+import com.architect.g1.cocktailfever.ui.main.MainViewModel
+import com.architect.g1.cocktailfever.usecases.FindCoctelById
+import com.architect.g1.cocktailfever.usecases.GetAllCocteles
+import kotlinx.coroutines.launch
+
+class DetailViewModel(
+    private val coctelId: Int,
+    private val findCoctelById: FindCoctelById): ViewModel(),
+    Scope by Scope.Impl() {
+
+    data class UiModel(val coctel: Coctel)
+
+    private val _model = MutableLiveData<UiModel>()
+    val model: LiveData<UiModel>
+        get() {
+            if (_model.value == null) findCoctel()
+            return _model
+        }
+
+    init {
+        initScope()
+    }
+
+    private fun findCoctel() {
+        launch {
+            _model.value = UiModel(findCoctelById.invoke(coctelId))
+        }
+    }
+
+    override fun onCleared() {
+        cancelScope()
+    }
+}
+
+@Suppress("UNCHECKED_CAST")
+class DetailViewModelFactory(
+    private val coctelId: Int,
+    private val findCoctelByIdUsesCase: FindCoctelById) :
+    ViewModelProvider.Factory {
+    override fun <T : ViewModel?> create(modelClass: Class<T>): T =
+        DetailViewModel(coctelId,findCoctelByIdUsesCase) as T
+}
