@@ -44,10 +44,3 @@ class MainViewModel(private val getAllCoctelesUsesCase: GetAllCocteles):ViewMode
         cancelScope()
     }
 }
-
-@Suppress("UNCHECKED_CAST")
-class MainViewModelFactory(private val getAllCoctelesUsesCase: GetAllCocteles) :
-    ViewModelProvider.Factory {
-    override fun <T : ViewModel?> create(modelClass: Class<T>): T =
-        MainViewModel(getAllCoctelesUsesCase) as T
-}

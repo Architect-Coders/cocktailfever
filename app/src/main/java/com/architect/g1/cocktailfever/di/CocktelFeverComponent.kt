@@ -2,6 +2,8 @@ package com.architect.g1.cocktailfever.di
 
 import android.app.Application
 import com.architect.g1.cocktailfever.data.repository.CoctelesRepository
+import com.architect.g1.cocktailfever.ui.detail.DetailActivityComponent
+import com.architect.g1.cocktailfever.ui.detail.DetailActivityModule
 import com.architect.g1.cocktailfever.ui.main.MainActivityComponent
 import com.architect.g1.cocktailfever.ui.main.MainActivityModule
 import dagger.BindsInstance
@@ -12,9 +14,8 @@ import javax.inject.Singleton
 @Component(modules = [AppModule::class])
 interface CocktelFeverComponent {
 
-    val coctelesRepository: CoctelesRepository
-
     fun plus(module: MainActivityModule): MainActivityComponent
+    fun plus(module: DetailActivityModule): DetailActivityComponent
 
     @Component.Factory
     interface Factory {
