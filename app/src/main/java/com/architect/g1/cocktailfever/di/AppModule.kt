@@ -4,6 +4,7 @@ import android.app.Application
 import androidx.room.Room
 import com.architect.g1.cocktailfever.data.database.CocktailFeverDatabase
 import com.architect.g1.cocktailfever.data.database.source.RoomDataSource
+import com.architect.g1.cocktailfever.data.repository.CoctelesRepository
 import com.architect.g1.cocktailfever.data.server.CocktailDbDataSource
 import com.architect.g1.cocktailfever.data.source.LocalDataSource
 import com.architect.g1.cocktailfever.data.source.RemoteDataSource
@@ -15,7 +16,7 @@ import javax.inject.Singleton
 class AppModule {
     @Provides
     @Singleton
-    fun databaseProvider(app: Application) = Room.databaseBuilder(
+    fun databaseProvider(app: Application): CocktailFeverDatabase = Room.databaseBuilder(
         app,
         CocktailFeverDatabase::class.java,
         "coctel-db"
@@ -26,4 +27,12 @@ class AppModule {
 
     @Provides
     fun remoteDataSourceProvider(): RemoteDataSource = CocktailDbDataSource()
+
+    @Provides
+    fun coctelesRepositoryProvider(
+        localDataSource: LocalDataSource,
+        remoteDataSource: RemoteDataSource
+    ): CoctelesRepository {
+        return CoctelesRepository(localDataSource, remoteDataSource)
+    }
 }

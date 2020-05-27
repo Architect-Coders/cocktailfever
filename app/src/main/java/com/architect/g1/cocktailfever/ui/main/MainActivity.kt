@@ -5,12 +5,8 @@ import android.os.Bundle
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.get
-import com.architect.g1.cocktailfever.CoctelApp
 import com.architect.g1.cocktailfever.R
-import com.architect.g1.cocktailfever.data.database.CocktailFeverDatabase_Impl
-import com.architect.g1.cocktailfever.data.database.source.RoomDataSource
-import com.architect.g1.cocktailfever.data.repository.CoctelesRepository
-import com.architect.g1.cocktailfever.data.server.CocktailDbDataSource
+import com.architect.g1.cocktailfever.di.CocktelFeverComponent
 import com.architect.g1.cocktailfever.ui.common.app
 import com.architect.g1.cocktailfever.ui.common.startActivity
 import com.architect.g1.cocktailfever.ui.detail.DetailActivity
@@ -23,17 +19,16 @@ class MainActivity : AppCompatActivity() {
     private lateinit var viewModel: MainViewModel
     private lateinit var adapter: CoctelAdapter
 
-    //private lateinit var component: MainActivityComponent
+    private lateinit var component: CocktelFeverComponent
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        //component = app.component.
-        //TODO Esto debe ser resuelto por el inyector de dependencia
+        component = app.component
         //val roomDataSource=RoomDataSource(this.app.db)
-        val coctelesRepository = CoctelesRepository(roomDataSource, CocktailDbDataSource())
-        val getAllCocteles = GetAllCocteles(coctelesRepository)
+        //val coctelesRepository = CoctelesRepository(roomDataSource, CocktailDbDataSource())
+        val getAllCocteles = GetAllCocteles(component.coctelesRepository)
 
         viewModel = ViewModelProvider(
             this,
