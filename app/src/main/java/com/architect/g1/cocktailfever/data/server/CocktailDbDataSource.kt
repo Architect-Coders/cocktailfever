@@ -8,7 +8,7 @@ import com.architect.g1.cocktailfever.domain.Coctel
 class CocktailDbDataSource: RemoteDataSource {
 
     override suspend fun obtenerCocteles(): List<Coctel> =
-        CocktailDb.servicio.obtenerTodosLosCocteles().resultados.map { it.aDomainCoctel() }
+        CocktailDb.servicio.obtenerTodosLosCocteles().drinks.map { it.aDomainCoctel() }
 
     override suspend fun obtenerDetalleCoctel(id: String): Coctel =
         CocktailDb.servicio.obtenerDetalleCoctel(id).aDomainCoctelDetalle()

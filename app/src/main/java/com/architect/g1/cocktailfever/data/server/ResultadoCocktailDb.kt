@@ -5,7 +5,7 @@ import com.google.gson.annotations.SerializedName
 import kotlinx.android.parcel.Parcelize
 
 data class ResultadoCoctelDb(
-    val resultados: List<Coctel>
+    val drinks: List<Coctel>
 )
 
 
