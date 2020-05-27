@@ -11,6 +11,6 @@ class CocktailDbDataSource: RemoteDataSource {
         CocktailDb.servicio.obtenerTodosLosCocteles().drinks.map { it.aDomainCoctel() }
 
     override suspend fun obtenerDetalleCoctel(id: String): Coctel =
-        CocktailDb.servicio.obtenerDetalleCoctel(id).aDomainCoctelDetalle()
+        CocktailDb.servicio.obtenerDetalleCoctel(id).drinks.map { it.aDomainCoctelDetalle() }[0]
 
 }
