@@ -7,9 +7,7 @@ import androidx.lifecycle.ViewModelProvider
 import com.architect.g1.cocktailfever.domain.Coctel
 import com.architect.g1.cocktailfever.ui.common.Scope
 import com.architect.g1.cocktailfever.usecases.GetAllCocteles
-import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
-import kotlinx.coroutines.withContext
 
 class MainViewModel(private val getAllCoctelesUsesCase: GetAllCocteles):ViewModel(),
     Scope by Scope.Impl() {
