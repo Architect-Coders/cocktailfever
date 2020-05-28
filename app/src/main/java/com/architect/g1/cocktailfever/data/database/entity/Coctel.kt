@@ -5,11 +5,11 @@ import androidx.room.PrimaryKey
 
 @Entity
 data class Coctel(
-    @PrimaryKey(autoGenerate = true) val id: Int,
+    @PrimaryKey(autoGenerate = true) val id: Int = 0,
     val nombre:String,
     val categoria:String,
     val instrucciones:String,
     val thumbUrl:String,
-    val ingredientes: MutableList<Ingrediente>
+    val ingredientes: List<Ingrediente>
 )
 

@@ -8,10 +8,3 @@ data class Coctel(
     val categoria:String = "",
     val instrucciones:String = ""
 )
-
-
-/*data class CoctelInicial(
-    val id: Int,
-    val nombre: String,
-    val thumbURL: String
-)*/

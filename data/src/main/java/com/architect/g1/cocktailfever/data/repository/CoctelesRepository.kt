@@ -10,11 +10,9 @@ class CoctelesRepository(
 ) {
 
     suspend fun getCoctelById(id: Int): Coctel {
-        val coctel = localDataSource.getCoctelById(id)
-        if(coctel.ingredientes.isEmpty()){
-            localDataSource.updateCoctel(
-                remoteDataSource.obtenerDetalleCoctel(id.toString().trim())
-            )
+        if(localDataSource.getCoctelById(id).ingredientes.isEmpty()){
+            val coctel = remoteDataSource.obtenerDetalleCoctel(id.toString().trim())
+            localDataSource.updateCoctel( coctel )
         }
         return localDataSource.getCoctelById(id)
     }

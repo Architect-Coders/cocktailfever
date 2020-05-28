@@ -46,7 +46,7 @@
                     android:layout_height="wrap_content"/>
 
                 <TextView
-                    android:id="@+id/tv_prepracion"
+                    android:id="@+id/tv_preparacion"
                     android:textSize="14sp"
                     android:layout_marginLeft="15dp"
                     android:layout_marginBottom="4dp"
@@ -74,6 +74,8 @@
                 android:overScrollMode="never"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+
                 android:adjustViewBounds="true"
                 android:layout_below="@id/tv_titulo_ingredientes"
                 tools:listitem="@layout/view_coctel_ingredientes_item"/>

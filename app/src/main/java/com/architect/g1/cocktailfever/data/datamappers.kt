@@ -32,33 +32,33 @@ fun ServerCoctelDetalle.aDomainCoctelDetalle(): DomainCoctel{
 
 }
 
-fun RoomCoctel.aDomainCoctel(): DomainCoctel =
+fun RoomCoctel.aDomainCoctel() =
     DomainCoctel(
         id,
         nombre,
         thumbUrl,
-        ArrayList<DomainIngrediente>(),
+        ingredientes.map { it.aDomainIngrediente() },
         categoria,
         instrucciones
     )
 
-fun DomainCoctel.aRoomCoctel(): RoomCoctel =
+fun DomainCoctel.aRoomCoctel() =
     RoomCoctel(
         id,
         nombre,
         categoria,
         instrucciones,
         thumbUrl,
-        ingredientes = ArrayList<RoomIngrediente>()
+        ingredientes.map { it.aRoomIngrediente() }
     )
 
-fun RoomIngrediente.aDomainIngrediente(): DomainIngrediente =
+fun RoomIngrediente.aDomainIngrediente() =
     DomainIngrediente(
         nombre,
         medida
     )
 
-fun DomainIngrediente.aRoomIngrediente(): RoomIngrediente =
+fun DomainIngrediente.aRoomIngrediente() =
     RoomIngrediente(
         0,
         nombre,
