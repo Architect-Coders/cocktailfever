@@ -8,6 +8,9 @@ data class ResultadoCoctelDb(
     val drinks: List<Coctel>
 )
 
+data class ResultadoCoctelDetalleDb(
+    val drinks: List<CoctelDetalle>
+)
 
 @Parcelize
 data class Coctel(
@@ -18,22 +21,21 @@ data class Coctel(
 
 @Parcelize
 data class CoctelDetalle(
-@SerializedName("idDrink") val id: String,
-@SerializedName("strDrink") val nombre:String,
-@SerializedName("strDrinkThumb") val thumbUrl:String,
-@SerializedName("strCategory") val categoria: String,
-@SerializedName("strInstructions") val instrucciones: String,
+    @SerializedName("idDrink") val id: String,
+    @SerializedName("strDrink") val nombre: String,
+    @SerializedName("strDrinkThumb") val thumbUrl: String,
+    @SerializedName("strCategory") val categoria: String,
+    @SerializedName("strInstructions") val instrucciones: String,
 
-@SerializedName("strIngredient1") val ingrediente_1: String,
-@SerializedName("strIngredient2") val ingrediente_2: String,
-@SerializedName("strIngredient3") val ingrediente_3: String,
-@SerializedName("strIngredient4") val ingrediente_4: String,
-@SerializedName("strIngredient5") val ingrediente_5: String,
+    @SerializedName("strIngredient1") val ingrediente_1: String?,
+    @SerializedName("strIngredient2") val ingrediente_2: String?,
+    @SerializedName("strIngredient3") val ingrediente_3: String?,
+    @SerializedName("strIngredient4") val ingrediente_4: String?,
+    @SerializedName("strIngredient5") val ingrediente_5: String?,
 
-@SerializedName("strMeasure1") val medidaIngrediente_1: String,
-@SerializedName("strMeasure2") val medidaIngrediente_2: String,
-@SerializedName("strMeasure3") val medidaIngrediente_3: String,
-@SerializedName("strMeasure4") val medidaIngrediente_4: String,
-@SerializedName("strMeasure5") val medidaIngrediente_5: String
-
+    @SerializedName("strMeasure1") val medidaIngrediente_1: String?,
+    @SerializedName("strMeasure2") val medidaIngrediente_2: String?,
+    @SerializedName("strMeasure3") val medidaIngrediente_3: String?,
+    @SerializedName("strMeasure4") val medidaIngrediente_4: String?,
+    @SerializedName("strMeasure5") val medidaIngrediente_5: String?
 ): Parcelable

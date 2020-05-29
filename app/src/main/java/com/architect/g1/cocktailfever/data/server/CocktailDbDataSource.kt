@@ -10,7 +10,10 @@ class CocktailDbDataSource: RemoteDataSource {
     override suspend fun obtenerCocteles(): List<Coctel> =
         CocktailDb.servicio.obtenerTodosLosCocteles().drinks.map { it.aDomainCoctel() }
 
-    override suspend fun obtenerDetalleCoctel(id: String): Coctel =
-        CocktailDb.servicio.obtenerDetalleCoctel(id).aDomainCoctelDetalle()
+    override suspend fun obtenerDetalleCoctel(id: String): Coctel {
+        val cocteles: List<CoctelDetalle> = CocktailDb.servicio.obtenerDetalleCoctel(id).drinks
+        val coctel = cocteles.map { it.aDomainCoctelDetalle() }[0]
+        return  coctel
+    }
 
 }

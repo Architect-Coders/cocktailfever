@@ -17,48 +17,48 @@ fun ServerCoctelCabecera.aDomainCoctel(): DomainCoctel = DomainCoctel(
 fun ServerCoctelDetalle.aDomainCoctelDetalle(): DomainCoctel{
     val ingredientes = ArrayList<DomainIngrediente>()
 
-    if(ingrediente_1.isNotEmpty())
+    if(ingrediente_1 != null && medidaIngrediente_1 != null)
         ingredientes.add(DomainIngrediente(ingrediente_1,medidaIngrediente_1))
-    if(ingrediente_2.isNotEmpty())
+    if(ingrediente_2 != null && medidaIngrediente_2 != null)
         ingredientes.add(DomainIngrediente(ingrediente_2,medidaIngrediente_2))
-    if(ingrediente_3.isNotEmpty())
+    if(ingrediente_3 != null && medidaIngrediente_3 != null)
         ingredientes.add(DomainIngrediente(ingrediente_3,medidaIngrediente_3))
-    if(ingrediente_4.isNotEmpty())
+    if(ingrediente_4 != null && medidaIngrediente_4 != null)
         ingredientes.add(DomainIngrediente(ingrediente_4,medidaIngrediente_4))
-    if(ingrediente_5.isNotEmpty())
+    if(ingrediente_5 != null && medidaIngrediente_5 != null)
         ingredientes.add(DomainIngrediente(ingrediente_5,medidaIngrediente_5))
 
     return DomainCoctel(id.toInt(),nombre,thumbUrl,ingredientes,categoria,instrucciones)
 
 }
 
-fun RoomCoctel.aDomainCoctel(): DomainCoctel =
+fun RoomCoctel.aDomainCoctel() =
     DomainCoctel(
         id,
         nombre,
         thumbUrl,
-        ArrayList<DomainIngrediente>(),
+        ingredientes.map { it.aDomainIngrediente() },
         categoria,
         instrucciones
     )
 
-fun DomainCoctel.aRoomCoctel(): RoomCoctel =
+fun DomainCoctel.aRoomCoctel() =
     RoomCoctel(
         id,
         nombre,
         categoria,
         instrucciones,
         thumbUrl,
-        ingredientes = ArrayList<RoomIngrediente>()
+        ingredientes.map { it.aRoomIngrediente() }
     )
 
-fun RoomIngrediente.aDomainIngrediente(): DomainIngrediente =
+fun RoomIngrediente.aDomainIngrediente() =
     DomainIngrediente(
         nombre,
         medida
     )
 
-fun DomainIngrediente.aRoomIngrediente(): RoomIngrediente =
+fun DomainIngrediente.aRoomIngrediente() =
     RoomIngrediente(
         0,
         nombre,

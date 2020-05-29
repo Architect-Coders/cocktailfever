@@ -8,6 +8,6 @@ interface CocktailService {
     suspend fun obtenerTodosLosCocteles():ResultadoCoctelDb
 
     @GET("lookup.php")
-    suspend fun obtenerDetalleCoctel(@Query("i") id: String): CoctelDetalle
+    suspend fun obtenerDetalleCoctel(@Query("i") id: String): ResultadoCoctelDetalleDb
 
 }

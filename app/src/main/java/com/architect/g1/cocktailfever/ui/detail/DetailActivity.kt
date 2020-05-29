@@ -37,7 +37,7 @@ class DetailActivity : AppCompatActivity() {
 
     private fun updateUi(model: DetailViewModel.UiModel) = with(model){
         contenedorDetalle.visibility=View.VISIBLE
-        tv_prepracion.text=coctel.instrucciones
+        tv_preparacion.text=model.coctel.instrucciones
         if(!model.coctel.ingredientes.isEmpty()){
             adapter.items=model.coctel.ingredientes
         }

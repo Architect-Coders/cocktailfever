@@ -31,8 +31,8 @@ class IngredientesAdapter
     class ViewHolder(view: View): RecyclerView.ViewHolder(view) {
         fun bind(ingredienteItem: Ingrediente){
             //itemView.imagen_ingrediente.loadUrl(Ingrediente.thumbUrl)
-            itemView.nombre_igrediente.text = ingredienteItem.nombre
-            itemView.cantidad_igrediente.text=ingredienteItem.medida
+            itemView.nombre_ingrediente.text = ingredienteItem.nombre
+            itemView.cantidad_ingrediente.text=ingredienteItem.medida
         }
     }
 }
