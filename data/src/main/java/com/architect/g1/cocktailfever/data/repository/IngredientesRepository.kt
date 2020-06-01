@@ -15,8 +15,8 @@ class IngredientesRepository(
         return localDataSource.getAllIngredientes()
     }
 
-    suspend fun isIngredienteTableEmpty() {
-        localDataSource.isIngredienteTableEmpty()
+    suspend fun isIngredienteTableEmpty(): Boolean {
+        return localDataSource.isIngredienteTableEmpty()
     }
 
     suspend fun insertIngrediente(ingrediente: Ingrediente) {

@@ -24,8 +24,8 @@ class CoctelesRepository(
         return localDataSource.getAllCocteles()
     }
 
-    suspend fun isCoctelTableEmpty() {
-        localDataSource.isCoctelTableEmpty()
+    suspend fun isCoctelTableEmpty(): Boolean {
+        return localDataSource.isCoctelTableEmpty()
     }
 
     suspend fun insertCoctel(coctel: Coctel) {
