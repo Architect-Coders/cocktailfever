@@ -6,7 +6,7 @@ import com.architect.g1.cocktailfever.domain.Coctel
 import com.architect.g1.cocktailfever.testshared.mockedCoctel
 import com.nhaarman.mockitokotlin2.verify
 import com.nhaarman.mockitokotlin2.whenever
-import junit.framework.TestCase.assertEquals
+import org.junit.Assert.assertEquals
 import kotlinx.coroutines.runBlocking
 import org.junit.Before
 import org.junit.Test

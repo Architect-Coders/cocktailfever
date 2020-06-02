@@ -3,7 +3,7 @@ package com.architect.g1.cocktailfever.data.repository
 import com.architect.g1.cocktailfever.data.source.LocalDataSource
 import com.architect.g1.cocktailfever.testshared.mockedIngrediente1
 import com.nhaarman.mockitokotlin2.whenever
-import junit.framework.TestCase.assertEquals
+import org.junit.Assert.assertEquals
 import kotlinx.coroutines.runBlocking
 import org.junit.Before
 import org.junit.Test
