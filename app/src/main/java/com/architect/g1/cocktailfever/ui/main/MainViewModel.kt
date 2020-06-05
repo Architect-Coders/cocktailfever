@@ -2,15 +2,14 @@ package com.architect.g1.cocktailfever.ui.main
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.ViewModel
-import androidx.lifecycle.ViewModelProvider
 import com.architect.g1.cocktailfever.domain.Coctel
-import com.architect.g1.cocktailfever.ui.common.Scope
+import com.architect.g1.cocktailfever.ui.common.ScopeViewModel
 import com.architect.g1.cocktailfever.usecases.GetAllCocteles
+import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.launch
 
-class MainViewModel(private val getAllCoctelesUsesCase: GetAllCocteles):ViewModel(),
-    Scope by Scope.Impl() {
+class MainViewModel(private val getAllCoctelesUsesCase: GetAllCocteles,
+                    uiDispatcher: CoroutineDispatcher) : ScopeViewModel(uiDispatcher) {
 
     sealed class UiModel{
         object Loading:UiModel()
@@ -41,6 +40,7 @@ class MainViewModel(private val getAllCoctelesUsesCase: GetAllCocteles):ViewMode
     }
 
     override fun onCleared() {
+        super.onCleared()
         cancelScope()
     }
 }

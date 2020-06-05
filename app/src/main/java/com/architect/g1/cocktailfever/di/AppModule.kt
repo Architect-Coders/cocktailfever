@@ -10,6 +10,8 @@ import com.architect.g1.cocktailfever.data.source.LocalDataSource
 import com.architect.g1.cocktailfever.data.source.RemoteDataSource
 import dagger.Module
 import dagger.Provides
+import kotlinx.coroutines.CoroutineDispatcher
+import kotlinx.coroutines.Dispatchers
 import javax.inject.Singleton
 
 @Module
@@ -34,5 +36,10 @@ class AppModule {
         remoteDataSource: RemoteDataSource
     ): CoctelesRepository {
         return CoctelesRepository(localDataSource, remoteDataSource)
+    }
+
+    @Provides
+    fun scopeViewModel(): CoroutineDispatcher {
+        return Dispatchers.Main
     }
 }

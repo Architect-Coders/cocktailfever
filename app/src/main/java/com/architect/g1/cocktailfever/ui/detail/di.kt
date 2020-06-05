@@ -6,13 +6,14 @@ import com.architect.g1.cocktailfever.usecases.GetAllCocteles
 import dagger.Module
 import dagger.Provides
 import dagger.Subcomponent
+import kotlinx.coroutines.CoroutineDispatcher
 
 @Module
 class DetailActivityModule(private val coctelId: Int) {
 
     @Provides
-    fun detailViewModelProvider(findCoctelById: FindCoctelById): DetailViewModel {
-        return DetailViewModel(coctelId, findCoctelById)
+    fun detailViewModelProvider(findCoctelById: FindCoctelById, uiDispatcher: CoroutineDispatcher): DetailViewModel {
+        return DetailViewModel(coctelId, findCoctelById, uiDispatcher)
     }
 
     @Provides
