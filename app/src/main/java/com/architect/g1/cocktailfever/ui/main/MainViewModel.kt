@@ -13,8 +13,8 @@ class MainViewModel(private val getAllCoctelesUsesCase: GetAllCocteles,
 
     sealed class UiModel{
         object Loading:UiModel()
-        class Content( val cocteles:List<Coctel>):UiModel()
-        class Navigation(val coctel: Coctel):UiModel()
+        data class Content(val cocteles:List<Coctel>):UiModel()
+        data class Navigation(val coctel: Coctel):UiModel()
     }
 
     private val _model=MutableLiveData<UiModel>()
@@ -28,7 +28,7 @@ class MainViewModel(private val getAllCoctelesUsesCase: GetAllCocteles,
         initScope()
     }
 
-    private  fun refresh(){
+    private fun refresh(){
         launch {
             _model.value=UiModel.Loading
             _model.value=UiModel.Content(getAllCoctelesUsesCase.invoke())

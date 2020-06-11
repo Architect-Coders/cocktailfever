@@ -13,6 +13,7 @@ import org.junit.Rule
 import org.junit.Test
 import org.junit.runner.RunWith
 import org.mockito.Mock
+import org.mockito.Mockito.inOrder
 import org.mockito.junit.MockitoJUnitRunner
 
 @RunWith(MockitoJUnitRunner::class)
@@ -36,28 +37,42 @@ class MainViewModelTest {
 
     @Test
     fun `after requesting all cocteles, loading is shown`() {
-        //FIXME para testear el estado Loading, se debe invocar a getAllCocteles, ¿no?
-        val cocteles = listOf(mockedCoctel.copy(1))
 
         runBlocking {
-            whenever(getAllCocteles.invoke()).thenReturn(cocteles)
+//            val cocteles = listOf(mockedCoctel.copy(1))
+//            whenever(getAllCocteles.invoke()).thenReturn(cocteles)
             mainViewModel.model.observeForever(observer)
-        }
 
-        verify(observer).onChanged(MainViewModel.UiModel.Loading)
+            val inOrder = inOrder(observer)
+            inOrder.verify(observer).onChanged(MainViewModel.UiModel.Loading)
+//            inOrder.verify(observer).onChanged(MainViewModel.UiModel.Content(cocteles))
+
+        }
     }
 
     @Test
     fun `getAllCocteles is called`() {
 
-        val cocteles = listOf(mockedCoctel.copy(1))
         runBlocking {
+            val cocteles = listOf(mockedCoctel.copy(1))
 
             whenever(getAllCocteles.invoke()).thenReturn(cocteles)
             mainViewModel.model.observeForever(observer)
 
+            verify(observer).onChanged(MainViewModel.UiModel.Content(cocteles))
         }
-        verify(observer).onChanged(MainViewModel.UiModel.Content(cocteles))
+    }
+
+    @Test
+    fun `onCoctelClicked is Called`() {
+        runBlocking {
+            val coctel = mockedCoctel.copy(1)
+            mainViewModel.onCoctelClicked(coctel)
+
+            mainViewModel.model.observeForever(observer)
+
+            verify(observer).onChanged(MainViewModel.UiModel.Navigation(coctel))
+        }
     }
 
 }
