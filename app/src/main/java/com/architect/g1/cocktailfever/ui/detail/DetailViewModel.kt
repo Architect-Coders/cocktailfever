@@ -11,7 +11,8 @@ import kotlinx.coroutines.launch
 class DetailViewModel(
     private val coctelId: Int,
     private val findCoctelById: FindCoctelById,
-    uiDispatcher: CoroutineDispatcher): ScopeViewModel(uiDispatcher) {
+    uiDispatcher: CoroutineDispatcher
+) : ScopeViewModel(uiDispatcher) {
 
     data class UiModel(val coctel: Coctel)
 
@@ -33,7 +34,7 @@ class DetailViewModel(
     }
 
     override fun onCleared() {
-        super.onCleared()
         cancelScope()
+        super.onCleared()
     }
 }

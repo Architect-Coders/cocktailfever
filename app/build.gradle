@@ -44,6 +44,8 @@ dependencies {
     implementation libs.values()
     kapt androidKaptLibs.values()
 
+    kaptTest androidKaptLibs['dagger2Compiler']
+
     testImplementation testLibs.values()
     testImplementation androidxTestLibs.values()
     androidTestImplementation androidTestLibs.values()
