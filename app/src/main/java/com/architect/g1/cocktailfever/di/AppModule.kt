@@ -4,7 +4,7 @@ import android.app.Application
 import androidx.room.Room
 import com.architect.g1.cocktailfever.data.database.CocktailFeverDatabase
 import com.architect.g1.cocktailfever.data.database.source.RoomDataSource
-import com.architect.g1.cocktailfever.data.repository.CoctelesRepository
+import com.architect.g1.cocktailfever.data.server.CocktailDb
 import com.architect.g1.cocktailfever.data.server.CocktailDbDataSource
 import com.architect.g1.cocktailfever.data.source.LocalDataSource
 import com.architect.g1.cocktailfever.data.source.RemoteDataSource
@@ -28,15 +28,7 @@ class AppModule {
     fun localDataSourceProvider(db: CocktailFeverDatabase): LocalDataSource = RoomDataSource(db)
 
     @Provides
-    fun remoteDataSourceProvider(): RemoteDataSource = CocktailDbDataSource()
-
-    @Provides
-    fun coctelesRepositoryProvider(
-        localDataSource: LocalDataSource,
-        remoteDataSource: RemoteDataSource
-    ): CoctelesRepository {
-        return CoctelesRepository(localDataSource, remoteDataSource)
-    }
+    fun remoteDataSourceProvider(cocktailDb: CocktailDb): RemoteDataSource = CocktailDbDataSource(cocktailDb)
 
     @Provides
     fun scopeViewModel(): CoroutineDispatcher {
