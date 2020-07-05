@@ -5,6 +5,7 @@ buildscript {
     ext.room_version = '2.2.5'
     ext.kotlin_coroutines_version = '1.3.5'
     ext.dagger_version = '2.27'
+    ext.server_version = '4.5.0'
     repositories {
         google()
         jcenter()
@@ -51,11 +52,10 @@ allprojects {
                 glideCompiler   : 'com.github.bumptech.glide:compiler:4.11.0',
                 roomCompiler    : "androidx.room:room-compiler:$room_version",
                 dagger2Compiler : "com.google.dagger:dagger-compiler:$dagger_version"
-
         ]
 
         libs = [
-                okhttpLoggingInterceptor    : 'com.squareup.okhttp3:logging-interceptor:4.5.0',
+                okhttpLoggingInterceptor    : "com.squareup.okhttp3:logging-interceptor:$server_version",
                 retrofit                    : 'com.squareup.retrofit2:retrofit:2.8.1',
                 retrofitGson                : 'com.squareup.retrofit2:converter-gson:2.8.1'
         ]
@@ -79,7 +79,7 @@ allprojects {
                 rules           : 'androidx.test:rules:1.2.0',
                 extJunit        : 'androidx.test.ext:junit-ktx:1.1.1',
                 roomTesting     : "androidx.room:room-testing:$room_version",
-                mockWebServer   : 'com.squareup.okhttp3:mockwebserver:4.2.1',
+                mockWebServer   : "com.squareup.okhttp3:mockwebserver:$server_version",
                 okhttpIdling    : 'com.jakewharton.espresso:okhttp3-idling-resource:1.0.0'
         ]
 

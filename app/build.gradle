@@ -14,7 +14,8 @@ android {
         versionCode 1
         versionName "1.0"
 
-        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+//        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        testInstrumentationRunner "com.architect.g1.cocktailfever.ui.UIRunner"
     }
 
     buildTypes {
@@ -42,11 +43,15 @@ dependencies {
     implementation androidLibs.values()
     implementation kotlinLibs.values()
     implementation libs.values()
-    kapt androidKaptLibs.values()
 
-    kaptTest androidKaptLibs['dagger2Compiler']
+    kapt androidKaptLibs.values()
+    kaptTest androidKaptLibs.values()
+
+    kaptAndroidTest androidKaptLibs.values()
 
     testImplementation testLibs.values()
     testImplementation androidxTestLibs.values()
+
+    androidTestImplementation testLibs.values()
     androidTestImplementation androidTestLibs.values()
 }
