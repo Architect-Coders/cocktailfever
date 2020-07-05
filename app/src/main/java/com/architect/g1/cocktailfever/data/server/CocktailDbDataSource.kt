@@ -5,13 +5,13 @@ import com.architect.g1.cocktailfever.data.aDomainCoctelDetalle
 import com.architect.g1.cocktailfever.data.source.RemoteDataSource
 import com.architect.g1.cocktailfever.domain.Coctel
 
-class CocktailDbDataSource: RemoteDataSource {
+class CocktailDbDataSource(private val cocktailDb: CocktailDb): RemoteDataSource {
 
     override suspend fun obtenerCocteles(): List<Coctel> =
-        CocktailDb.servicio.obtenerTodosLosCocteles().drinks.map { it.aDomainCoctel() }
+        cocktailDb.servicio.obtenerTodosLosCocteles().drinks.map { it.aDomainCoctel() }
 
     override suspend fun obtenerDetalleCoctel(id: String): Coctel {
-        val cocteles: List<CoctelDetalle> = CocktailDb.servicio.obtenerDetalleCoctel(id).drinks
+        val cocteles: List<CoctelDetalle> = cocktailDb.servicio.obtenerDetalleCoctel(id).drinks
         val coctel = cocteles.map { it.aDomainCoctelDetalle() }[0]
         return  coctel
     }

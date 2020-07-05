@@ -4,7 +4,10 @@ apply plugin: 'kotlin'
 dependencies {
     implementation project(":data")
     implementation project(":domain")
-    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
+
+    implementation kotlinLibs.values()
+    testImplementation testLibs.values()
+
 }
 
 sourceCompatibility = "7"

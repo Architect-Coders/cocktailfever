@@ -2,16 +2,17 @@ package com.architect.g1.cocktailfever.ui.detail
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.ViewModel
 import com.architect.g1.cocktailfever.domain.Coctel
-import com.architect.g1.cocktailfever.ui.common.Scope
+import com.architect.g1.cocktailfever.ui.common.ScopeViewModel
 import com.architect.g1.cocktailfever.usecases.FindCoctelById
+import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.launch
 
 class DetailViewModel(
     private val coctelId: Int,
-    private val findCoctelById: FindCoctelById): ViewModel(),
-    Scope by Scope.Impl() {
+    private val findCoctelById: FindCoctelById,
+    uiDispatcher: CoroutineDispatcher
+) : ScopeViewModel(uiDispatcher) {
 
     data class UiModel(val coctel: Coctel)
 
@@ -34,5 +35,6 @@ class DetailViewModel(
 
     override fun onCleared() {
         cancelScope()
+        super.onCleared()
     }
 }

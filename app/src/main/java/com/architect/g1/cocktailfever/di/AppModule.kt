@@ -4,12 +4,14 @@ import android.app.Application
 import androidx.room.Room
 import com.architect.g1.cocktailfever.data.database.CocktailFeverDatabase
 import com.architect.g1.cocktailfever.data.database.source.RoomDataSource
-import com.architect.g1.cocktailfever.data.repository.CoctelesRepository
+import com.architect.g1.cocktailfever.data.server.CocktailDb
 import com.architect.g1.cocktailfever.data.server.CocktailDbDataSource
 import com.architect.g1.cocktailfever.data.source.LocalDataSource
 import com.architect.g1.cocktailfever.data.source.RemoteDataSource
 import dagger.Module
 import dagger.Provides
+import kotlinx.coroutines.CoroutineDispatcher
+import kotlinx.coroutines.Dispatchers
 import javax.inject.Singleton
 
 @Module
@@ -26,13 +28,10 @@ class AppModule {
     fun localDataSourceProvider(db: CocktailFeverDatabase): LocalDataSource = RoomDataSource(db)
 
     @Provides
-    fun remoteDataSourceProvider(): RemoteDataSource = CocktailDbDataSource()
+    fun remoteDataSourceProvider(cocktailDb: CocktailDb): RemoteDataSource = CocktailDbDataSource(cocktailDb)
 
     @Provides
-    fun coctelesRepositoryProvider(
-        localDataSource: LocalDataSource,
-        remoteDataSource: RemoteDataSource
-    ): CoctelesRepository {
-        return CoctelesRepository(localDataSource, remoteDataSource)
+    fun scopeViewModel(): CoroutineDispatcher {
+        return Dispatchers.Main
     }
 }

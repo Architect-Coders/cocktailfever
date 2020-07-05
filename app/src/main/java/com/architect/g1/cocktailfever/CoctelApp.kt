@@ -4,7 +4,7 @@ import android.app.Application
 import com.architect.g1.cocktailfever.di.CocktelFeverComponent
 import com.architect.g1.cocktailfever.di.DaggerCocktelFeverComponent
 
-class CoctelApp : Application() {
+open class CoctelApp : Application() {
 
     lateinit var component: CocktelFeverComponent
         private set
@@ -12,8 +12,11 @@ class CoctelApp : Application() {
     override fun onCreate() {
         super.onCreate()
 
-        component = DaggerCocktelFeverComponent
-            .factory()
-            .create(this)
+        component = initComponent()
+
     }
+
+    open fun initComponent() = DaggerCocktelFeverComponent
+        .factory()
+        .create(this)
 }

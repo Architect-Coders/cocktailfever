@@ -5,12 +5,13 @@ import com.architect.g1.cocktailfever.usecases.GetAllCocteles
 import dagger.Module
 import dagger.Provides
 import dagger.Subcomponent
+import kotlinx.coroutines.CoroutineDispatcher
 
 @Module
 class MainActivityModule {
 
     @Provides
-    fun mainViewModelProvider(getAllCocteles: GetAllCocteles) = MainViewModel(getAllCocteles)
+    fun mainViewModelProvider(getAllCocteles: GetAllCocteles, uiDispatcher: CoroutineDispatcher) = MainViewModel(getAllCocteles, uiDispatcher)
 
     @Provides
     fun getAllCoctelesProvider(coctelesRepository: CoctelesRepository) =
